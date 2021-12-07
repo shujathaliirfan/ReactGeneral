@@ -1,0 +1,53 @@
+
+state: {
+
+perilsList: [],
+selectedPerilsList: [],
+
+}
+
+
+onChangePerils = (_, selectedOptions, reason, detail) => {
+		this.setState({ selectedPerilsList: selectedOptions });
+	};
+
+
+	<FormControl
+												variant="outlined"
+													className="mb-16 flex flex-col input-placeholder createClientRole"
+												>
+													<CustomAutocomplete
+														multiple
+														filterSelectedOptions
+														name="Perils"
+														value={selectedPerilsList}
+														// onChange={handleChange}
+														options={this.state.perilsList}
+														getOptionLabel={option => option.fieldsubtype}
+														onChange={this.onChangePerils}
+														size="small"
+														renderInput={params => (
+															<TextField
+																{...params}
+																label="Perils *"
+																InputProps={{
+																	...params.InputProps,
+																	classes: {
+																		notchedOutline: classes.notchedOutline,
+																		root: classes.cssOutlinedInput,
+																		focused: classes.cssFocused
+																	}
+																}}
+																InputLabelProps={{
+																	classes: {
+																		root: classes.cssLabel,
+																		focused: classes.cssFocused
+																	}
+																}}
+																// error={roleError}
+																// helperText={roleError}
+																variant="outlined"
+															/>
+														)}
+													/>
+												</FormControl>
